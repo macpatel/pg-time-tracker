@@ -1,0 +1,41 @@
+<div ng-controller="AdminController">
+	<nav class="navbar navbar-static-top">
+	    <div class="container">
+	      <div class="navbar-header">
+	        <a class="navbar-brand" href="#">TimeTracker
+	        </a>
+	      </div>
+	      <div id="navbar8" class="navbar-collapse collapse">
+	        <ul class="nav navbar-nav navbar-right">
+				<li><a ui-sref="Home" ui-sref-active="active">Home</a></li>
+				<li><a ui-sref="AdminLogout" ui-sref-active="active">Logout</a></li>
+	        </ul>
+	      </div>
+	      <!--/.nav-collapse -->
+	    </div>
+	    <!--/.container-fluid -->
+	</nav>	
+	<h2>User Timesheets</h2>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<table class="table table-hover table-striped table-boredered table-responsive">
+				<thead>
+					<th>User</th>
+					<th>Task Name</th>
+					<th>Date</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="timesheet in timesheets">
+						<td>{{ timesheet.user.username }}</td>
+						<td>{{ timesheet.taskName }}</td>
+						<td>{{ timesheet.startTime | date:'dd-MMM-yyyy' }}</td>
+						<td>{{ timesheet.startTime | date:'hh:mm a' }}</td>
+						<td>{{ timesheet.endTime | date:'hh:mm a' }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

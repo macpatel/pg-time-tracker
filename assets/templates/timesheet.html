@@ -1,0 +1,119 @@
+<div ng-controller="TimesheetController" class="container-fluid">
+	<nav class="navbar navbar-static-top">
+	    <div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">TimeTracker
+			</a>
+			</div>
+	        <ul class="nav navbar-nav navbar-right">
+				<li><a ui-sref="Home" ui-sref-active="active">Home</a></li>
+				<li><a ui-sref="Logout" ui-sref-active="active">Logout</a></li>
+	        </ul>
+	    </div>
+	</nav>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<h2>My Timesheet</h2>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="col-md-4">
+				<button class="btn btn-success" ng-click="editTimesheet()">New Task</button>
+				
+			</div>
+			<div class="col-md-8">
+				<div class="form-inline">
+					<div class="form-group">
+						<label for="exampleInputName2">Filter: </label>
+						<div class="input-group">
+							<input type="text" class="form-control" style="padding: 4px 0px; line-height: 0px;" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" readonly="readonly" />
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-info pull-right " ng-click="filterTimesheet()">Filter</button>
+					</div>
+					<div class="checkbox form-group" >
+						<label>
+						  	<input type="checkbox" ng-model="allTimesheets" ng-click="showAllTImesheets()"> Show All
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<table class="table table-hover table-striped table-responsive">
+				<thead>
+					<th>Task Name</th>
+					<th>Date</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="timesheet in timesheets">
+						<!-- <td>{{ timesheet.id }}</td> -->
+						<td>{{ timesheet.taskName }}</td>
+						<td>{{ timesheet.startTime | date:'dd-MMM-yyyy' }}</td>
+						<td>{{ timesheet.startTime | date:'hh:mm a' }}</td>
+						<td>{{ timesheet.endTime | date:'hh:mm a' }}</td>
+						<td>
+							<button class="btn btn-info" ng-click="editTimesheet(timesheet)" ng-disabled="editEnabled(timesheet)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">      
+			<form name="myForm" ng-submit="saveTimesheet()">	
+		    	<div class="modal-header">
+		    		<h4 class="modal-title">Task</h4>
+		    	</div>
+		      	<div class="modal-body">
+		       	
+				<div class="row">
+					<div class="col-md-8 time-entry">
+						
+				<!-- 		<span class="alert alert-danger">
+							<span ng-repeat=""></span>
+						</span> -->
+							<label>Task Name</label>
+			                <input name="taskName" class="form-control" ng-model="timesheet.taskName" placeholder="Enter Task Name" required>
+			                <p ng-show="timesheet.userNameValidity" class="help-block">You name is required.</p><br><br>
+			                <!-- <label>Start Time</label><br>
+							<timepicker name="startTime" ng-model="timesheet.startTime" hour-step="1" minute-step="1" show-meridian="true"></timepicker><br><br>
+							<label>End Time</label><br>
+							<timepicker name="endTime" ng-model="timesheet.endTime" hour-step="1" minute-step="1" show-meridian="true"></timepicker> -->
+							<label>Start Time</label><br>
+							<div uib-timepicker ng-model="timesheet.startTime" hour-step="1" minute-step="1" show-meridian="true">></div><br>
+							<label>End Time</label><br>
+						    <div uib-timepicker ng-model="timesheet.endTime" hour-step="1" minute-step="1" show-meridian="true">></div><br>
+
+						
+					</div>
+				</div>
+	      
+		      </div>
+		      <div class="modal-footer">       
+		         <!-- <button class="btn btn-primary" ng-click="saveTimesheet()">Save</button> -->
+		         <button class="btn btn-success" type="submit">Save</button>
+		         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="resetModel()">Close</button>
+		      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+</div>

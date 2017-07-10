@@ -1,0 +1,20 @@
+<div ng-controller="AdminLoginController">
+
+	<div class = "container">
+		<div class="wrapper">
+			<form name="Login_Form" class="form-signin" ng-submit="adminLogin()">
+			    <h3 class="form-signin-heading">Admin Login</h3>
+				  <hr class="colorgraph"><br>
+				  
+				  <input type="text" ng-model="login.email" class="form-control" name="email" placeholder="you@email.com" required="" autofocus="" />
+				  <input type="password" ng-model="login.password" class="form-control" name="Password" placeholder="Password" required=""/>     		  
+				 
+				  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
+			</form>			
+		</div>
+			<div class="text-center">
+				<a ui-sref="Home" ui-sref-active="active">Go Home</a>
+			</div>		
+	</div>
+
+</div>
