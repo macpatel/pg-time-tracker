@@ -16,7 +16,7 @@ app.config(function($locationProvider, $authProvider, $stateProvider) {
 
     $authProvider.facebook({
       name: 'facebook',
-      url: 'http://localhost:1337/auth/facebook',
+      url: '/auth/facebook',
       authorizationEndpoint: 'https://www.facebook.com/v2.8/dialog/oauth',
       redirectUri: window.location.origin + '/',
       requiredUrlParams: ['display', 'scope'],
