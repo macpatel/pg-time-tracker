@@ -81,9 +81,16 @@ module.exports.connections = {
     user: 'ffpznzvbvrlrwh', // optional
     password: '465728b27779bcb0cfcc29ef2493bad5d5c4762b2485a725ade73f45b427e810', // optional
     database: 'daajo71np1krop' //optional
+  },
+
+
+  localPostgresqlServer: {
+    adapter: 'sails-postgresql',
+    host: 'localhost',
+    user: 'mahesh', // optional
+    password: 'mahesh', // optional
+    database: 'peoplegrove1' //optional
   }
-
-
   /***************************************************************************
   *                                                                          *
   * More adapters: https://github.com/balderdashy/sails                      *
