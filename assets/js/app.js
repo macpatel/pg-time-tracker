@@ -50,8 +50,10 @@ app.config(function($locationProvider, $authProvider, $stateProvider) {
     })
     .state('Logout', {
         url: '/logout',
-        controller: function($scope, $route, $state, $auth) {
+        controller: function($scope, $route, $state, $auth, $localStorage) {
             $auth.logout();
+            $auth.removeToken();
+            $localStorage.$reset();
             $state.go('Login');
         }
     })
@@ -64,8 +66,10 @@ app.config(function($locationProvider, $authProvider, $stateProvider) {
     })
     .state('AdminLogout', {
         url: '/admin/logout',
-        controller  : function($scope, $route, $state, $localStorage){
+        controller  : function($scope, $route, $state, $auth, $localStorage){
             console.log('Admin logout');
+            $auth.logout();
+            $auth.removeToken();            
             $localStorage.$reset();
             $state.go('AdminLogin');
         }
