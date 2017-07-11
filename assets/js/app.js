@@ -5,7 +5,7 @@ app.run(run);
 app.config(function($locationProvider, $authProvider, $stateProvider) {
         
     $authProvider.facebook({
-      clientId: '1954920324534262'
+      clientId: '126776724593378'//'1954920324534262'
     });
 
     // Optional: For client-side use (Implicit Grant), set responseType to 'token' (default: 'code')
